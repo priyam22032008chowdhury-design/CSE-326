@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Publishing Workflow System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER AND MENU -->
+  <div class="header">
+    <h1>Book Publishing Workflow System</h1>
+    <button onclick="showPage('pageManuscripts')">Manuscripts</button>
+    <button onclick="showPage('pageAuthors')">Authors</button>
+    <button onclick="showPage('pageEditors')">Editors</button>
+  </div>
+
+  <div class="container">
+
+    <!-- PAGE 1: MANUSCRIPTS -->
+    <div id="pageManuscripts">
+
+      <h2>Publishing Stages</h2>
+      <div id="pipeline" class="pipeline"></div>
+
+      <h2>Add New Manuscript</h2>
+      <div class="box">
+        <input type="text" id="mTitle" placeholder="Book title">
+        <select id="mAuthor"></select>
+        <select id="mEditor"></select>
+        <button onclick="addManuscript()">Submit Manuscript</button>
+      </div>
+
+      <h2>All Manuscripts</h2>
+      <div class="box">
+        <input type="text" id="searchBox" placeholder="Search by title" oninput="showManuscripts()">
+        <select id="stageFilter" onchange="showManuscripts()"></select>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Title</th><th>Author</th><th>Editor</th><th>Stage</th><th>Revision Status</th><th>Publication</th><th>Action</th></tr>
+          </thead>
+          <tbody id="manuscriptRows"></tbody>
+        </table>
+      </div>
+
+      <!-- DETAILS PANEL (hidden until a manuscript is opened) -->
+      <div id="details" class="box" style="display:none;">
+        <h2 id="detailTitle"></h2>
+        <p id="detailInfo"></p>
+        <div id="detailSteps" class="pipeline"></div>
+
+        <p>Change editor: <select id="detailEditor" onchange="changeEditor()"></select></p>
+
+        <button onclick="approveStage()">Approve Stage</button>
+        <button onclick="requestRevision()">Request Revision</button>
+        <button onclick="markRevised()">Mark Revised</button>
+        <button onclick="nextStage()">Move To Next Stage</button>
+        <button onclick="publishBook()">Publish</button>
+        <button class="red" onclick="deleteManuscript()">Delete</button>
+        <button onclick="closeDetails()">Close</button>
+
+        <h3>Comments</h3>
+        <select id="commentBy"></select>
+        <input type="text" id="commentText" placeholder="Write a comment">
+        <button onclick="addComment()">Add Comment</button>
+        <div id="commentList"></div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: AUTHORS -->
+    <div id="pageAuthors" style="display:none;">
+      <h2>Authors</h2>
+      <div class="box">
+        <input type="text" id="authorName" placeholder="Author name">
+        <button onclick="addAuthor()">Add Author</button>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Name</th><th>Manuscripts</th><th>Action</th></tr></thead>
+          <tbody id="authorRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PAGE 3: EDITORS -->
+    <div id="pageEditors" style="display:none;">
+      <h2>Editors</h2>
+      <div class="box">
+        <input type="text" id="editorName" placeholder="Editor name">
+        <select id="editorRole">
+          <option>Editor</option>
+          <option>Proofreader</option>
+          <option>Cover Designer</option>
+        </select>
+        <button onclick="addEditor()">Add Editor</button>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Name</th><th>Role</th><th>Manuscripts</th><th>Action</th></tr></thead>
+          <tbody id="editorRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

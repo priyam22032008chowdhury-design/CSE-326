@@ -1,0 +1,124 @@
+/* ---------- Basic page style ---------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f4f7;
+  color: #222;
+}
+
+/* ---------- Header and menu ---------- */
+.header {
+  background-color: #14213d;
+  color: white;
+  padding: 15px 20px;
+}
+.header h1 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+.header button {
+  background-color: #fca311;
+  color: #14213d;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.container {
+  padding: 15px 20px;
+}
+
+/* ---------- White boxes and form fields ---------- */
+.box {
+  background-color: white;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+input, select {
+  padding: 8px;
+  margin: 4px 4px 4px 0;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+.box button {
+  background-color: #14213d;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin: 4px 4px 4px 0;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.box button.red {
+  background-color: #c0392b;
+}
+
+/* ---------- Stage boxes (pipeline) ---------- */
+.pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.step {
+  flex: 1;
+  min-width: 120px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}
+.step.current {
+  background-color: #14213d;
+  color: white;
+  border-color: #14213d;
+}
+.step.done {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+/* ---------- Tables ---------- */
+.tablewrap {
+  overflow-x: auto;
+  margin-bottom: 15px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #e0e4ea;
+}
+
+/* ---------- Status labels ---------- */
+.approved  { color: green;  font-weight: bold; }
+.revision  { color: red;    font-weight: bold; }
+.progress  { color: #b36b00; font-weight: bold; }
+.published { color: #0b6e99; font-weight: bold; }
+
+/* ---------- Comments ---------- */
+.comment {
+  border-left: 4px solid #14213d;
+  background-color: #f7f7f7;
+  padding: 6px 10px;
+  margin: 8px 0;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+  .header h1 { font-size: 20px; }
+  input, select { width: 100%; box-sizing: border-box; }
+}
